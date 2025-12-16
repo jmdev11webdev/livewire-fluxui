@@ -54,15 +54,12 @@ Each project represents a **specific stage of Laravel proficiency**.
 laravel-projects/
 │
 ├── applied-breeze/
-│   └── Basic authentication using Laravel Breeze
-│
-├── breeze-login-registration/
-│   └── Advanced authentication with laravel breeze
+│   └── Basic authentication using Laravel Breeze -- the start of this repository
 │
 └── README.md
 ```
 
-Each folder is an **independent Laravel project** with its own configuration and setup and other purpose from applied breeze to jetstream, so on and so forth.
+Each folder is an **independent Laravel project** with its own configuration and setup.
 
 ---
 
@@ -105,6 +102,65 @@ code .
 ```
 
 Make sure the **Remote - WSL** extension is installed.
+
+---
+
+## Laravel Breeze Setup (Authentication Starter)
+
+For projects that use **Laravel Breeze** as the authentication starter kit, follow these steps inside the specific project folder.
+
+### 1️⃣ Install dependencies
+
+```bash
+composer install
+npm install
+```
+
+### 2️⃣ Install Laravel Breeze
+
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install
+```
+
+You may choose **Blade**, **Livewire**, or **Inertia** when prompted (depending on the project).
+
+---
+
+### 3️⃣ Environment setup
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Configure your database credentials inside the `.env` file, then run:
+
+```bash
+php artisan migrate
+```
+
+---
+
+### 4️⃣ Build frontend assets
+
+```bash
+npm run dev
+```
+
+---
+
+### 5️⃣ Run the application
+
+```bash
+php artisan serve
+```
+
+Your application should now be accessible at:
+
+```
+http://127.0.0.1:8000
+```
 
 ---
 
@@ -151,5 +207,3 @@ This repository is open-source and available under the MIT License.
 
 JMDevStack
 Aspiring Full Stack Web Developer
-
-GitHub: [https://github.com/your-username](https://github.com/your-username)
