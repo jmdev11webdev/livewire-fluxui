@@ -53,19 +53,16 @@ Each project represents a **specific stage of Laravel proficiency**.
 ```text
 laravel-projects/
 │
-├── breeze-auth/
+├── applied-breeze/
 │   └── Basic authentication using Laravel Breeze
 │
-├── jetstream-app/
-│   └── Advanced authentication and team features using Laravel Jetstream
-│
-├── advanced-projects/
-│   └── Full-featured and production-style Laravel systems
+├── breeze-login-registration/
+│   └── Advanced authentication with laravel breeze
 │
 └── README.md
 ```
 
-Each folder is an **independent Laravel project** with its own configuration and setup.
+Each folder is an **independent Laravel project** with its own configuration and setup and other purpose from applied breeze to jetstream, so on and so forth.
 
 ---
 
