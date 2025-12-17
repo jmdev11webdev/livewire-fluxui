@@ -11,7 +11,7 @@ Route::get('/', function () {
 /* temporarily route to register page */
 Route::get('register', function () {
     return view('register');
-})->name('dashboard');
+})->name('register');
 
 // routes that require authentication and verified email
 Route::middleware('auth', 'verified')->group(function () {
