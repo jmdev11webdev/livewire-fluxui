@@ -57,3 +57,133 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+````markdown
+# Breeze Auth Project
+
+This project uses **Laravel Breeze** for authentication and is set up to run with **XAMPP MySQL** on Windows while developing inside **WSL2 Ubuntu**.
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/breeze-auth.git
+cd breeze-auth
+````
+
+2. Install dependencies:
+
+```bash
+composer install
+```
+
+3. Copy the `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+4. Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 🗄 Database Setup (WSL2 + XAMPP)
+
+When using **WSL2 Ubuntu** with **XAMPP MySQL** on Windows, additional steps are needed to connect Laravel to MySQL:
+
+### 1. Update MySQL bind address
+
+* Open `xampp/mysql/bin/my.ini`.
+* Find the line:
+
+```ini
+bind-address = 127.0.0.1
+```
+
+* Change it to:
+
+```ini
+bind-address = 0.0.0.0
+```
+
+* Restart MySQL in XAMPP.
+
+### 2. Allow MySQL through Windows Firewall
+
+1. Open **Windows Defender Firewall → Advanced Settings → Inbound Rules → New Rule**.
+2. Select **Port** and click **Next**.
+3. Select **TCP**, enter **3306** in the Specific local ports field, then click **Next**.
+4. Choose **Allow the connection**, then click **Next**.
+5. Apply the rule to **Domain, Private, and Public**, then click **Next**.
+6. Give the rule a name, e.g., `MySQL XAMPP WSL2`, then click **Finish**.
+
+> This allows WSL2 Ubuntu to connect to MySQL running in XAMPP on Windows.
+
+### 3. Get your WSL2 nameserver / Windows host IP
+
+* In WSL2 Ubuntu, run:
+
+```bash
+cat /etc/resolv.conf
+```
+
+* Note the IP in the `nameserver` line (e.g., `172.22.112.1`). This is your Windows host from WSL2’s perspective.
+
+### 4. Update Laravel `.env`
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=172.22.112.1   # Use your nameserver IP
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+> ⚠ If you’re running Laravel in Windows (not WSL2), use `DB_HOST=127.0.0.1` instead.
+
+### 5. Clear config cache
+
+```bash
+php artisan config:clear
+php artisan cache:clear
+```
+
+### 6. Run migrations
+
+```bash
+php artisan migrate
+```
+
+Your Laravel project should now connect successfully to XAMPP MySQL from WSL2.
+
+---
+
+## 🔑 Laravel Breeze Setup
+
+If you need to install Laravel Breeze (for authentication scaffolding):
+
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+php artisan migrate
+```
+
+---
+
+## ✅ Notes
+
+* This setup ensures that **Laravel inside WSL2** can connect to **XAMPP MySQL on Windows**.
+* Make sure the **Windows firewall** allows MySQL (port 3306).
+* Always restart MySQL after modifying `my.ini`.
+* If running Laravel **directly in Windows**, use `DB_HOST=127.0.0.1` and you do not need the inbound rule or nameserver IP.
+
