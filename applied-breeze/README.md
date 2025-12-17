@@ -57,3 +57,57 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+````markdown
+## 📂 Applied Breeze Project
+
+Folder: `applied-breeze`
+
+This folder contains a Laravel project where **Laravel Breeze** has been applied to quickly scaffold authentication features like login, registration, password reset, and email verification.
+
+### How I Applied Breeze
+
+1. **Created a new Laravel project** (or used an existing one):
+   ```bash
+   laravel new applied-breeze
+   cd applied-breeze
+````
+
+2. **Installed Breeze via Composer**:
+
+   ```bash
+   composer require laravel/breeze --dev
+   ```
+
+3. **Installed Breeze scaffolding**:
+
+   ```bash
+   php artisan breeze:install
+   ```
+
+4. **Installed frontend dependencies and built assets**:
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+5. **Migrated the database** to create the users table and other authentication tables:
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Tested authentication** by running the local server:
+
+   ```bash
+   php artisan serve
+   ```
+
+   You now have a fully working authentication system using Laravel Breeze with Tailwind CSS.
+
+---
+
+You can navigate into the `applied-breeze` folder to see the full project structure and explore the implementation.
+
+```
